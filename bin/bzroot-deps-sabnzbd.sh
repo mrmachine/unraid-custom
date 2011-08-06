@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ -d "/tmp/bzroot" ]; then
-    mkdir -p /boot/custom/packages
-    cd /boot/custom/packages
+    mkdir -p /boot/unraid-custom/packages
+    cd /boot/unraid-custom/packages
 
     [ ! -f "gettext-0.17-i486-3.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/a/gettext-0.17-i486-3.txz
     [ ! -f "infozip-6.0-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/a/infozip-6.0-i486-1.txz

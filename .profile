@@ -1,2 +1,2 @@
-export PATH=$PATH:/boot/custom/bin
+export PATH=$PATH:/boot/unraid-custom/bin
 export TERM=xterm

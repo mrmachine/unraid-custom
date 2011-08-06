@@ -1,9 +1,9 @@
 #!/bin/bash
 
-mkdir -p /boot/custom/packages
-mkdir -p /boot/custom/src
+mkdir -p /boot/unraid-custom/packages
+mkdir -p /boot/unraid-custom/src
 
-cd /boot/custom/packages
+cd /boot/unraid-custom/packages
 
 # deps.
 [ ! -f "gettext-0.17-i486-3.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/a/gettext-0.17-i486-3.txz
@@ -29,16 +29,16 @@ cd /boot/custom/packages
 [ ! -x "/usr/bin/unrar" ] && installpkg unrar-3.9.10-i486-2alien.tgz
 
 # source.
-if [ ! -d "/boot/custom/SABnzbd" ]; then
-	mkdir -p /boot/custom/SABnzbd
-	cd /boot/custom/src
+if [ ! -d "/boot/unraid-custom/SABnzbd" ]; then
+	mkdir -p /boot/unraid-custom/SABnzbd
+	cd /boot/unraid-custom/src
 	[ ! -f "SABnzbd-0.6.6-src.tar.gz" ] && wget http://downloads.sourceforge.net/project/sabnzbdplus/sabnzbdplus/sabnzbd-0.6.6/SABnzbd-0.6.6-src.tar.gz
-	tar --strip-components 1 -C /boot/custom/SABnzbd -xvf SABnzbd-0.6.6-src.tar.gz
+	tar --strip-components 1 -C /boot/unraid-custom/SABnzbd -xvf SABnzbd-0.6.6-src.tar.gz
 fi
 
 # config.
-cd /boot/custom/SABnzbd
-[ ! -f "sabnzbd.ini" ] && cp /boot/custom/etc/sabnzbd.ini.default sabnzbd.ini
+cd /boot/unraid-custom/SABnzbd
+[ ! -f "sabnzbd.ini" ] && cp /boot/unraid-custom/etc/sabnzbd.ini sabnzbd.ini
 
 # run.
 if [ test -a $(ps auxwww|grep SABnzbd.py|grep -v grep|wc -l) -lt 1 ]; then

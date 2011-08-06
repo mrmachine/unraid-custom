@@ -3,16 +3,16 @@
 if [ -d "/tmp/bzroot" ]; then
     KERNEL=`uname -r`
 
-    mkdir -p /boot/custom/packages
-    cd /boot/custom/packages
+    mkdir -p /boot/unraid-custom/packages
+    cd /boot/unraid-custom/packages
 
     # deps.
     [ ! -f "cpio-2.9-i486-2.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/a/cpio-2.9-i486-2.txz
     [ ! -x "/bin/cpio" ] && installpkg cpio-2.9-i486-2.txz
 
     # root .profile.
-    [ ! -f "/boot/custom/.profile" ] && touch /boot/custom/.profile
-    ln -sf /boot/custom/.profile /tmp/bzroot/root/.profile
+    [ ! -f "/boot/unraid-custom/.profile" ] && touch /boot/unraid-custom/.profile
+    ln -sf /boot/unraid-custom/.profile /tmp/bzroot/root/.profile
 
     # kernel.
     cp -f /usr/src/linux/.config /tmp/bzroot/usr/src/linux-${KERNEL}

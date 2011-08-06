@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p /boot/custom/packages
-cd /boot/custom/packages
+mkdir -p /boot/unraid-custom/packages
+cd /boot/unraid-custom/packages
 
 # deps.
 [ ! -f "curl-7.20.1-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/n/curl-7.20.1-i486-1.txz
@@ -17,13 +17,13 @@ cd /boot/custom/packages
 [ ! -x "/usr/bin/sqlite3" ] && installpkg sqlite-3.6.23.1-i486-1.txz
 
 # source.
-if [ ! -d "/boot/custom/Sick-Beard" ]; then
-    git clone https://github.com/midgetspy/Sick-Beard.git /boot/custom/Sick-Beard
+if [ ! -d "/boot/unraid-custom/Sick-Beard" ]; then
+    git clone https://github.com/midgetspy/Sick-Beard.git /boot/unraid-custom/Sick-Beard
 fi
 
 # config.
-cd /boot/custom/Sick-Beard
-[ ! -f "sickbeard.ini" ] && cp /boot/custom/etc/sickbeard.ini.default sickbeard.ini
+cd /boot/unraid-custom/Sick-Beard
+[ ! -f "sickbeard.ini" ] && cp /boot/unraid-custom/etc/sickbeard.ini sickbeard.ini
 
 # run.
 if [ test -a $(ps auxwww|grep SickBeard.py|grep -v grep|wc -l) -lt 1 ]; then

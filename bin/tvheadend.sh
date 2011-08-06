@@ -1,10 +1,10 @@
 #!/bin/bash
 
-mkdir -p /boot/custom/etc/tvheadend
-mkdir -p /boot/custom/packages
+mkdir -p /boot/unraid-custom/etc/tvheadend
+mkdir -p /boot/unraid-custom/packages
 
-if [ ! -d "/boot/custom/src/tvheadend/build.Linux" ]; then
-    cd /boot/custom/packages
+if [ ! -d "/boot/unraid-custom/src/tvheadend/build.Linux" ]; then
+    cd /boot/unraid-custom/packages
 
     # deps.
     [ ! -f "binutils-2.20.51.0.8-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/d/binutils-2.20.51.0.8-i486-1.txz
@@ -26,14 +26,14 @@ if [ ! -d "/boot/custom/src/tvheadend/build.Linux" ]; then
     [ ! -x "/usr/bin/pkg-config" ] && installpkg pkg-config-0.23-i486-2.txz
 
     # source.
-    if [ ! -d "/boot/custom/src/tvheadend" ]; then
-        git clone https://github.com/andoma/tvheadend.git /boot/custom/src/tvheadend
+    if [ ! -d "/boot/unraid-custom/src/tvheadend" ]; then
+        git clone https://github.com/andoma/tvheadend.git /boot/unraid-custom/src/tvheadend
     else
-        git update /boot/custom/src/tvheadend
+        git update /boot/unraid-custom/src/tvheadend
     fi
 
     # build.
-    cd /boot/custom/src/tvheadend
+    cd /boot/unraid-custom/src/tvheadend
     ./configure --disable-avahi --release
     make clean all
 fi
@@ -41,7 +41,7 @@ fi
 # run.
 if [ test -a $(ps auxwww|grep Linux/tvheadend|grep -v grep|wc -l) -lt 1 ]; then
 	usermod -G video -a nobody > /dev/null 2>&1
-	/boot/custom/src/tvheadend/build.Linux/tvheadend -c /boot/custom/etc/tvheadend -f -u nobody -C
+	/boot/unraid-custom/src/tvheadend/build.Linux/tvheadend -c /boot/unraid-custom/etc/tvheadend -f -u nobody -C
 else
 	echo Tvheadend is already running.
 fi

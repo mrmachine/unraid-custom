@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p /boot/custom/packages
-cd /boot/custom/packages
+mkdir -p /boot/unraid-custom/packages
+cd /boot/unraid-custom/packages
 
 # deps.
 [ ! -f "cmake-2.8.1-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/d/cmake-2.8.1-i486-1.txz
@@ -11,7 +11,7 @@ cd /boot/custom/packages
 
 # run.
 if [ test -a $(ps auxwww|grep "make run"|grep -v grep|wc -l) -lt 1 ]; then
-    cd /boot/custom/src/dvbhdhomerun/userhdhomerun
+    cd /boot/unraid-custom/src/dvbhdhomerun/userhdhomerun
     make run 1>/dev/null &
 else
     echo UserHDHomeRun is already running.

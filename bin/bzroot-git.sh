@@ -1,8 +1,8 @@
 #!/bin/bash
 
 if [ -d "/tmp/bzroot" ]; then
-    mkdir -p /boot/custom/packages
-    cd /boot/custom/packages
+    mkdir -p /boot/unraid-custom/packages
+    cd /boot/unraid-custom/packages
 
     [ ! -f "curl-7.20.1-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/n/curl-7.20.1-i486-1.txz
     [ ! -f "git-1.7.1-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/d/git-1.7.1-i486-1.txz

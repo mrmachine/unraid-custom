@@ -2,11 +2,11 @@
 
 KERNEL=`uname -r | cut -d"-" -f1`
 
-mkdir -p /boot/custom/packages
-mkdir -p /boot/custom/src
+mkdir -p /boot/unraid-custom/packages
+mkdir -p /boot/unraid-custom/src
 mkdir -p /usr/src/linux-${KERNEL}
 
-cd /boot/custom/packages
+cd /boot/unraid-custom/packages
 
 # deps.
 [ ! -f "binutils-2.20.51.0.8-i486-1.txz" ] && wget http://slackware.cs.utah.edu/pub/slackware/slackware-13.1/slackware/d/binutils-2.20.51.0.8-i486-1.txz
@@ -30,11 +30,11 @@ cd /boot/custom/packages
 [ ! -x "/usr/bin/perl" ] && installpkg perl-5.10.1-i486-1.txz
 
 # source.
-cd /boot/custom/src
+cd /boot/unraid-custom/src
 [ ! -f "linux-${KERNEL}.tar.gz" ] && wget http://www.kernel.org/pub/linux/kernel/v2.6/linux-${KERNEL}.tar.gz
 
 # build.
-tar --strip-components 1 -C /usr/src/linux-${KERNEL} -xvf /boot/custom/src/linux-${KERNEL}.tar.gz
+tar --strip-components 1 -C /usr/src/linux-${KERNEL} -xvf /boot/unraid-custom/src/linux-${KERNEL}.tar.gz
 ln -sf /usr/src/linux-${KERNEL} /usr/src/linux
 rsync -avR /usr/src/linux-`uname -r`/./ /usr/src/linux
 #sed -i 's/CONFIG_LOCALVERSION="-unRAID"/CONFIG_LOCALVERSION="-custom"/g' /usr/src/linux/.config

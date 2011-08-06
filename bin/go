@@ -1,9 +1,0 @@
-#!/bin/bash
-
-/boot/custom/bin/userhdhomerun
-
-/boot/custom/bin/couchpotato
-/boot/custom/bin/openssh
-/boot/custom/bin/sabnzbd
-/boot/custom/bin/sickbeard
-/boot/custom/bin/tvheadend
