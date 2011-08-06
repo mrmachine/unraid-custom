@@ -13,7 +13,7 @@ if [ ! -x "/usr/bin/git" ]; then
 fi
 
 if [ ! -d "/boot/unraid-custom" ]; then
-	git clone git@github.com:mrmachine/unraid-custom.git /boot/unraid-custom
+	git clone https://github.com/mrmachine/unraid-custom.git /boot/unraid-custom
 else
 	if [ ! -d "/boot/unraid-custom/.git" ]; then
 		echo /boot/unraid-custom already exists, and is not a git repository.
